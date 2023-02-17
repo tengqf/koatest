@@ -65,17 +65,34 @@ async function bootstrap() {
   });
 }
 
+//openAI调用
+const configuration = new Configuration({
+  apiKey: 你的apiKey,
+});
+const openai = new OpenAIApi(configuration);
 
-// 一个用户发什么消息，就反弹什么消息的消息回复功能
+async function getAIResponse(prompt) {
+  const completion = await openai.createCompletion({
+    model: 'text-davinci-003',
+    prompt,
+    max_tokens: 1024,
+    temperature: 0.1,
+  });
+  return (completion?.data?.choices?.[0].text || 'AI 挂了').trim();
+}
+
 router.post('/message/post', async ctx => {
   const { ToUserName, FromUserName, Content, CreateTime } = ctx.request.body;
 
+  const response = await getAIResponse(Content);
+  
   ctx.body = {
     ToUserName: FromUserName,
     FromUserName: ToUserName,
     CreateTime: +new Date(),
     MsgType: 'text',
-    Content: `反弹你发的消息：${Content}`,
+    
+    Content: response,
   };
 });
 
