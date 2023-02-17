@@ -64,7 +64,7 @@ async function bootstrap() {
     console.log("启动成功", port);
   });
 }
-bootstrap();
+
 
 // 一个用户发什么消息，就反弹什么消息的消息回复功能
 router.post('/message/post', async ctx => {
@@ -79,3 +79,4 @@ router.post('/message/post', async ctx => {
   };
 });
 
+bootstrap();
