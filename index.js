@@ -67,7 +67,7 @@ async function bootstrap() {
 
 //openAI调用
 const configuration = new Configuration({
-  apiKey: 你的apiKey,
+  apiKey: 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,
 });
 const openai = new OpenAIApi(configuration);
 
