@@ -35,10 +35,10 @@ const LIMIT_AI_TEXT_COUNT = 10;
 const LIMIT_AI_IMAGE_COUNT = 5;
 
 const LIMIT_COUNT_RESPONSE =
-  'VG4Da7eC09_44p8iG0ChFWp_KIfIC1sF9K3gJz49yajrc30qWhqPYXMzcakSK-qC';
+  'Exceed Limit';
 
 const configuration = new Configuration({
-  apiKey: '',//'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',
+  apiKey: ''OpenaiKey'',
 });
 
 const openai = new OpenAIApi(configuration);
